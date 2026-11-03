@@ -1,0 +1,9 @@
+# Copy to profiles.yml (git-ignored) or to ~/.dbt/profiles.yml.
+# DuckDB runs in-process: no server, no cloud account.
+leakage:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: leakage.duckdb      # check/acceptance.py reads this file
+      threads: 4
