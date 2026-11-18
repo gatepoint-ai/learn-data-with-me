@@ -118,4 +118,4 @@ The prices are relative units close to the ratios of Google Cloud Storage list p
 
 ---
 
-📣 LinkedIn post: 18 Mar 2027 · Previous: [15 · Environments as code](../15-environments-as-code/)
+Previous: [15 · Environments as code](../15-environments-as-code/)

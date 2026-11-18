@@ -98,4 +98,4 @@ The same sort works for scheduled jobs, API consumers and tables: anything with 
 
 ---
 
-📣 LinkedIn post: 17 Dec 2026 · Previous: [04 · What restore doesn't restore](../04-what-restore-does-not-restore/) · Next: [06 · Re-runnable by design](../06-re-runnable-by-design/)
+Previous: [04 · What restore doesn't restore](../04-what-restore-does-not-restore/) · Next: [06 · Re-runnable by design](../06-re-runnable-by-design/)

@@ -6,19 +6,27 @@ I'm [Maicon Abreu](https://www.linkedin.com/in/mbdabreu/), a senior data enginee
 
 The lessons are about **the failures that don't raise errors**: data that never arrived, joins that multiply, dumps that abort on someone else's lock, restores that look like data loss, jobs that report success on the wrong input. Each one comes with the SQL or the command that catches it, tested on PostgreSQL 16, DuckDB or SQLite. They're written for data engineers and analytics engineers.
 
+## dbt & Snowflake notes
+
+One finding per note from working with dbt and Snowflake: the exact mechanism, the real logs, and a dbt project you can run on DuckDB with no account. New notes every Thursday.
+
+| # | Note | The idea in one line | Example | On LinkedIn |
+|---|---|---|---|---|
+| 01 | [dbt v2 caught my Snowflake error before Snowflake did](dbt-notes/01-dbt-v2-caught-my-snowflake-error/) | The incremental filter doesn't run until the table exists and the run isn't a full refresh. dbt v2's static analysis flagged the bad token. dbt Core 1.12 doesn't check the SQL it sends. | dbt + DuckDB | 19 Nov 2026 |
+
 ## Lessons
 
 | # | Lesson | The idea in one line | Example | On LinkedIn |
 |---|---|---|---|---|
-| 01 | [Missing data raises no error](01-missing-data-raises-no-error/) | A missing number never looks wrong. Reconcile against an independent source, at the level where the loss happens. | Python, no installs | 12 Nov 2026 |
-| 02 | [Grain first](02-grain-first/) | Write down what one row is before you join anything. | Python, no installs | 19 Nov 2026 |
-| 03 | [Schedule beats tuning](03-schedule-beats-tuning/) | A parallel `pg_dump` aborts when a batch job asks for an `ACCESS EXCLUSIVE` lock. Find the window first. | Python, no installs | 3 Dec 2026 |
-| 04 | [What restore doesn't restore](04-what-restore-does-not-restore/) | Every byte came back and the app still couldn't see its tables: role settings live outside the dump. | Python, no installs | 10 Dec 2026 |
-| 05 | [Measure before you migrate](05-measure-before-you-migrate/) | Diagrams describe intent. Byte counters describe use, and they shrink the scope. | Python, no installs | 17 Dec 2026 |
-| 06 | [Re-runnable by design](06-re-runnable-by-design/) | Every step will fail halfway one day. Make running it twice safe. | Python, no installs | 7 Jan 2027 |
-| 07 | [Refresh derived data, don't migrate it](07-refresh-derived-data/) | A smaller dump with more objects can be nothing lost: move definitions, rebuild materialized views. | Python, no installs | 14 Jan 2027 |
-| 08 | [Late-arriving data](08-late-arriving-data/) | Count by event date, re-process a window sized from the measured lag, close days late. | Python, no installs | 21 Jan 2027 |
-| 09 | [Tests as controls](09-tests-as-controls/) | A test that has never failed proves nothing. Plant the fault; make an empty load fail. | Python, no installs | 28 Jan 2027 |
+| 01 | [Missing data raises no error](01-missing-data-raises-no-error/) | A missing number never looks wrong. Reconcile against an independent source, at the level where the loss happens. | Python, no installs | — |
+| 02 | [Grain first](02-grain-first/) | Write down what one row is before you join anything. | Python, no installs | — |
+| 03 | [Schedule beats tuning](03-schedule-beats-tuning/) | A parallel `pg_dump` aborts when a batch job asks for an `ACCESS EXCLUSIVE` lock. Find the window first. | Python, no installs | — |
+| 04 | [What restore doesn't restore](04-what-restore-does-not-restore/) | Every byte came back and the app still couldn't see its tables: role settings live outside the dump. | Python, no installs | — |
+| 05 | [Measure before you migrate](05-measure-before-you-migrate/) | Diagrams describe intent. Byte counters describe use, and they shrink the scope. | Python, no installs | — |
+| 06 | [Re-runnable by design](06-re-runnable-by-design/) | Every step will fail halfway one day. Make running it twice safe. | Python, no installs | — |
+| 07 | [Refresh derived data, don't migrate it](07-refresh-derived-data/) | A smaller dump with more objects can be nothing lost: move definitions, rebuild materialized views. | Python, no installs | — |
+| 08 | [Late-arriving data](08-late-arriving-data/) | Count by event date, re-process a window sized from the measured lag, close days late. | Python, no installs | — |
+| 09 | [Tests as controls](09-tests-as-controls/) | A test that has never failed proves nothing. Plant the fault; make an empty load fail. | Python, no installs | — |
 | 10 | [The leakage pipeline](leakage-pipeline/) | The project behind the lessons, end to end. | dbt + DuckDB | when it passes its acceptance check |
 
 ### Data platform
@@ -27,12 +35,12 @@ The infrastructure under a data platform, from Google Cloud environments I creat
 
 | # | Lesson | The idea in one line | Example | On LinkedIn |
 |---|---|---|---|---|
-| 11 | [Reach the warehouse privately](11-reach-the-warehouse-privately/) | A private endpoint and a private DNS zone: same hostname, no internet path. | Python, no installs | 11 Feb 2027 |
-| 12 | [Database flags on day one](12-database-flags-on-day-one/) | The incident you can diagnose is the one you logged. | Python, no installs | 18 Feb 2027 |
-| 13 | [Your state file holds the keys](13-your-state-file-holds-keys/) | Identity inside, a scoped key at the boundary, and both secrets in Terraform state. | Python, no installs | 25 Feb 2027 |
-| 14 | [Kafka across three zones](14-kafka-across-three-zones/) | Count failure domains, not brokers: RF 3, min ISR 2, one broker per zone. | Python, no installs | 4 Mar 2027 |
-| 15 | [Environments as code](15-environments-as-code/) | Same code everywhere, declared differences only, imports for what was made by hand. | Python, no installs | 11 Mar 2027 |
-| 16 | [A landing bucket for a backfill](16-a-landing-bucket-for-a-backfill/) | Decide who deletes, how to undo and when files go cold, before they arrive. | Python, no installs | 18 Mar 2027 |
+| 11 | [Reach the warehouse privately](11-reach-the-warehouse-privately/) | A private endpoint and a private DNS zone: same hostname, no internet path. | Python, no installs | — |
+| 12 | [Database flags on day one](12-database-flags-on-day-one/) | The incident you can diagnose is the one you logged. | Python, no installs | — |
+| 13 | [Your state file holds the keys](13-your-state-file-holds-keys/) | Identity inside, a scoped key at the boundary, and both secrets in Terraform state. | Python, no installs | — |
+| 14 | [Kafka across three zones](14-kafka-across-three-zones/) | Count failure domains, not brokers: RF 3, min ISR 2, one broker per zone. | Python, no installs | — |
+| 15 | [Environments as code](15-environments-as-code/) | Same code everywhere, declared differences only, imports for what was made by hand. | Python, no installs | — |
+| 16 | [A landing bucket for a backfill](16-a-landing-bucket-for-a-backfill/) | Decide who deletes, how to undo and when files go cold, before they arrive. | Python, no installs | — |
 
 *Watch or star the repo to follow along.*
 

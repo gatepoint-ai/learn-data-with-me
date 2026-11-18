@@ -113,4 +113,4 @@ Part 2: pick the latest backup folder
 
 ---
 
-📣 LinkedIn post: 7 Jan 2027 · Previous: [05 · Measure before you migrate](../05-measure-before-you-migrate/) · Next: [07 · Refresh derived data, don't migrate it](../07-refresh-derived-data/)
+Previous: [05 · Measure before you migrate](../05-measure-before-you-migrate/) · Next: [07 · Refresh derived data, don't migrate it](../07-refresh-derived-data/)

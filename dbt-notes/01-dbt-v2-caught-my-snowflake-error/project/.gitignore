@@ -1,0 +1,8 @@
+target/
+logs/
+dbt_packages/
+*.duckdb
+*.duckdb.wal
+
+# This profile only points at a local DuckDB file (no credentials), so it is published.
+!profiles.yml

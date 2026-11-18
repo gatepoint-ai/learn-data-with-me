@@ -132,4 +132,4 @@ Aggregate copied: 90 rows. Aggregate rebuilt from the base table: 90 rows.
 
 ---
 
-📣 LinkedIn post: 14 Jan 2027 · Previous: [06 · Re-runnable by design](../06-re-runnable-by-design/) · Next: [08 · Late-arriving data](../08-late-arriving-data/)
+Previous: [06 · Re-runnable by design](../06-re-runnable-by-design/) · Next: [08 · Late-arriving data](../08-late-arriving-data/)

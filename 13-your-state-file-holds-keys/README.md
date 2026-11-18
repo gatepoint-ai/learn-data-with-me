@@ -108,4 +108,4 @@ google_service_account_key.puller      private_key  NO                yes, 24 ch
 
 ---
 
-📣 LinkedIn post: 25 Feb 2027 · Previous: [12 · Database flags on day one](../12-database-flags-on-day-one/) · Next: [14 · Kafka across three zones](../14-kafka-across-three-zones/)
+Previous: [12 · Database flags on day one](../12-database-flags-on-day-one/) · Next: [14 · Kafka across three zones](../14-kafka-across-three-zones/)

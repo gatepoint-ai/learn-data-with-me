@@ -114,4 +114,4 @@ Missing role state, taken from the globals dump (run as the role that holds ADMI
 
 ---
 
-📣 LinkedIn post: 10 Dec 2026 · Previous: [03 · Schedule beats tuning](../03-schedule-beats-tuning/) · Next: [05 · Measure before you migrate](../05-measure-before-you-migrate/)
+Previous: [03 · Schedule beats tuning](../03-schedule-beats-tuning/) · Next: [05 · Measure before you migrate](../05-measure-before-you-migrate/)

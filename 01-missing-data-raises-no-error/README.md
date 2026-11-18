@@ -108,4 +108,4 @@ Same data, same rule. The level you reconcile at decides whether the gap exists.
 
 ---
 
-📣 LinkedIn post: 12 Nov 2026 · Next: [02 · Grain first](../02-grain-first/)
+Next: [02 · Grain first](../02-grain-first/)

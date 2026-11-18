@@ -119,4 +119,4 @@ The `negative_charge` control has a bug on purpose: `ABS(amount) < 0` can never 
 
 ---
 
-📣 LinkedIn post: 28 Jan 2027 · Previous: [08 · Late-arriving data](../08-late-arriving-data/) · Next: [10 · The leakage pipeline](../leakage-pipeline/)
+Previous: [08 · Late-arriving data](../08-late-arriving-data/) · Next: [10 · The leakage pipeline](../leakage-pipeline/)

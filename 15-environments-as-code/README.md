@@ -101,4 +101,4 @@ Sizes may differ. Versions, flags and network posture may not.
 
 ---
 
-📣 LinkedIn post: 11 Mar 2027 · Previous: [14 · Kafka across three zones](../14-kafka-across-three-zones/) · Next: [16 · A landing bucket for a backfill](../16-a-landing-bucket-for-a-backfill/)
+Previous: [14 · Kafka across three zones](../14-kafka-across-three-zones/) · Next: [16 · A landing bucket for a backfill](../16-a-landing-bucket-for-a-backfill/)

@@ -115,4 +115,4 @@ directory format, 8 workers (-F d -j 8): ~4 h
 
 ---
 
-📣 LinkedIn post: 3 Dec 2026 · Previous: [02 · Grain first](../02-grain-first/) · Next: [04 · What restore doesn't restore](../04-what-restore-does-not-restore/)
+Previous: [02 · Grain first](../02-grain-first/) · Next: [04 · What restore doesn't restore](../04-what-restore-does-not-restore/)

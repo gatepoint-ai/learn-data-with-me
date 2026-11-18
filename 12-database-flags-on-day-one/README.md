@@ -151,4 +151,4 @@ log_min_duration_statement       -1   MISSING: you will not see the slow-query l
 
 ---
 
-📣 LinkedIn post: 18 Feb 2027 · Previous: [11 · Reach the warehouse privately](../11-reach-the-warehouse-privately/) · Next: [13 · Your state file holds the keys](../13-your-state-file-holds-keys/)
+Previous: [11 · Reach the warehouse privately](../11-reach-the-warehouse-privately/) · Next: [13 · Your state file holds the keys](../13-your-state-file-holds-keys/)

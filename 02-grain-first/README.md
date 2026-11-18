@@ -107,4 +107,4 @@ The wrong version flags everyone, and its smallest gap is the real leak.
 
 ---
 
-📣 LinkedIn post: 19 Nov 2026 · Previous: [01 · Missing data raises no error](../01-missing-data-raises-no-error/) · Next: [03 · Schedule beats tuning](../03-schedule-beats-tuning/)
+Previous: [01 · Missing data raises no error](../01-missing-data-raises-no-error/) · Next: [03 · Schedule beats tuning](../03-schedule-beats-tuning/)

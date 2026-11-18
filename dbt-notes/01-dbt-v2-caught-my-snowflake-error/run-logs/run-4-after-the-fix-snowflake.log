@@ -1,0 +1,37 @@
+# dbt v2 2.0.11 in dbt Studio, Snowflake target, 11 Nov 2026, after the fix.
+# Model line 11 is now:
+#   where created_date >= (select {{ dbt.dateadd('day', -3, 'max(created_date)') }} from {{ this }})
+# Debug and timing lines removed and the dbt project name shortened to "analytics"; nothing else changed.
+
+21:59:16      Running Fusion version: 2.0.11
+21:59:19      Started model     dbt_gai.fct_payments_incremental (incremental)
+21:59:19      Started rendering model     dbt_gai.fct_payments_incremental (incremental)
+21:59:19      Started analyzing model     dbt_gai.fct_payments_incremental (incremental)
+21:59:19      Started running model     dbt_gai.fct_payments_incremental (incremental)
+21:59:19        Query executed on node: model.analytics.fct_payments_incremental:
+create or replace  temporary view analytics.dbt_gai.fct_payments_incremental__dbt_tmp
+  as (
+select
+    payment_id,
+    order_id,
+    payment_method,
+    status,
+    amount_cents,
+    created_date
+    from analytics.dbt_gai.stg_stripe__payments
+        where created_date >= (select
+    dateadd(
+        day,
+        -3,
+        max(created_date)
+        )
+ from analytics.dbt_gai.fct_payments_incremental)
+  )
+21:59:20        Query executed on node: model.analytics.fct_payments_incremental:
+describe table analytics.dbt_gai.fct_payments_incremental__dbt_tmp
+...     (describe the target, check for schema changes, then merge into the target on payment_id)
+21:59:22 Execution Summary: run successfully for target default [6.6s]
+Summary 1 total | 1 success
+
+# No warning in "analyzing" this time. On Snowflake, dbt.dateadd falls through to the default
+# implementation, dateadd(day, -3, max(created_date)), which is Snowflake's own function.

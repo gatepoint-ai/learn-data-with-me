@@ -1,0 +1,11 @@
+name: lookback
+version: "1.0"
+config-version: 2
+profile: lookback
+
+seeds:
+  lookback:
+    payments:
+      +column_types:
+        payment_id: integer
+        created_date: date

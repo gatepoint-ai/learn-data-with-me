@@ -134,4 +134,4 @@ The addresses are made up: a private one, and two from the documentation ranges 
 
 ---
 
-📣 LinkedIn post: 11 Feb 2027 · Previous: [10 · The leakage pipeline](../leakage-pipeline/) · Next: [12 · Database flags on day one](../12-database-flags-on-day-one/)
+Previous: [10 · The leakage pipeline](../leakage-pipeline/) · Next: [12 · Database flags on day one](../12-database-flags-on-day-one/)

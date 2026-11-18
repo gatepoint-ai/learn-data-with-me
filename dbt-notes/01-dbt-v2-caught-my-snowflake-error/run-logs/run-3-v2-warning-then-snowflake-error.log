@@ -1,0 +1,41 @@
+# dbt v2 (Fusion engine) in dbt Studio, Snowflake target, 11 Nov 2026.
+# Model: marts/finance/fct_payments_incremental.sql, line 11:
+#   where created_date >= (select max(created_date) - interval 3 day from {{ this }})
+# Debug lines removed and the dbt project name shortened to "analytics"; nothing else changed.
+
+dbt run -s fct_payments_incremental
+21:51:14      Started model     dbt_gai.fct_payments_incremental (incremental)
+21:51:14      Started rendering model     dbt_gai.fct_payments_incremental (incremental)
+21:51:14      Started analyzing model     dbt_gai.fct_payments_incremental (incremental)
+21:51:14         Warn [BaselineIntrospectionSyntaxInvalid (dbt1070)]: Syntax error after rendering with introspection (see docs.getdbt.com/docs/fusion/new-concepts):
+                        mismatched input '3' expecting one of '(+)', '::', 'ABORT', 'ABSENT', 'ACCESS', 'ADD', 'ADMIN' ...
+                          --> models/marts/finance/fct_payments_incremental.sql:11:5 (target/compiled/analytics/models/marts/finance/fct_payments_incremental.sql:12:64)
+21:51:14      Started running model     dbt_gai.fct_payments_incremental (incremental)
+21:51:14        Query executed on node: model.analytics.fct_payments_incremental:
+create or replace  temporary view analytics.dbt_gai.fct_payments_incremental__dbt_tmp
+  as (
+select
+    payment_id,
+    order_id,
+    payment_method,
+    status,
+    amount_cents,
+    created_date
+    from analytics.dbt_gai.stg_stripe__payments
+    where created_date >= (select max(created_date) - interval 3 day from analytics.dbt_gai.fct_payments_incremental)
+  )
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.analytics.fct_payments_incremental", "profile_name": "user", "target_name": "default"} */
+21:51:15        Error [DbSyntaxInvalid (dbt1302)]: Database Error in model fct_payments_incremental (target/run/analytics/models/marts/finance/fct_payments_incremental.sql)
+                          [Snowflake] 001003 (42000): SQL compilation error:
+                          syntax error line 18 at position 27 unexpected 'select'.
+                          syntax error line 18 at position 38 unexpected 'created_date'.
+                          syntax error line 18 at position 52 unexpected '-'.
+                          (in run/analytics/models/marts/finance/fct_payments_incremental.sql)
+21:51:15      Errored [   1.24s] model     dbt_gai.fct_payments_incremental (incremental)
+
+# Read it in this order:
+# 1. "Started analyzing": dbt v2 parses the compiled SQL before sending it. The warning points at
+#    line 11, column 5 of the model and at line 12, column 64 of the compiled file: the "3".
+# 2. Static analysis is in its default mode, baseline: findings are warnings, so the run continues.
+# 3. Snowflake rejects the statement. Its "line 18" counts the wrapper dbt adds
+#    (create or replace temporary view ... as ( ... )), not the lines of the model.

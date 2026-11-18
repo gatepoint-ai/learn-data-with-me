@@ -1,0 +1,8 @@
+# Local DuckDB file, created on the first run. No account, no credentials.
+lookback:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: lookback.duckdb
+      threads: 1

@@ -133,4 +133,4 @@ The model is simplified on purpose: it assumes every live replica is in sync.
 
 ---
 
-📣 LinkedIn post: 4 Mar 2027 · Previous: [13 · Your state file holds the keys](../13-your-state-file-holds-keys/) · Next: [15 · Environments as code](../15-environments-as-code/)
+Previous: [13 · Your state file holds the keys](../13-your-state-file-holds-keys/) · Next: [15 · Environments as code](../15-environments-as-code/)

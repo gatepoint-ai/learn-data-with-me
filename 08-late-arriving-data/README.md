@@ -113,4 +113,4 @@ Every day should total 300. '-' is short, '+' is over.
 
 ---
 
-📣 LinkedIn post: 21 Jan 2027 · Previous: [07 · Refresh derived data, don't migrate it](../07-refresh-derived-data/) · Next: [09 · Tests as controls](../09-tests-as-controls/)
+Previous: [07 · Refresh derived data, don't migrate it](../07-refresh-derived-data/) · Next: [09 · Tests as controls](../09-tests-as-controls/)
