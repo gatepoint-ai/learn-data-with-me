@@ -12,7 +12,7 @@ One finding per note from working with dbt and Snowflake: the exact mechanism, t
 
 | # | Note | The idea in one line | Example | On LinkedIn |
 |---|---|---|---|---|
-| 01 | [dbt v2 caught my Snowflake error before Snowflake did](dbt-notes/01-dbt-v2-caught-my-snowflake-error/) | The incremental filter doesn't run until the table exists and the run isn't a full refresh. dbt v2's static analysis flagged the bad token. dbt Core 1.12 doesn't check the SQL it sends. | dbt + DuckDB | 19 Nov 2026 |
+| 01 | [dbt v2 caught my Snowflake error before Snowflake did](dbt-notes/01-dbt-v2-caught-my-snowflake-error/) | The incremental filter doesn't run until the table exists and the run isn't a full refresh. dbt v2's static analysis flagged the bad token. dbt Core 1.12 doesn't check the SQL it sends. | dbt + DuckDB | [18 Nov 2026](https://lnkd.in/p/dvuDpGQX) |
 
 ## Lessons
 
