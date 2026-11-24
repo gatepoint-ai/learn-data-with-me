@@ -167,4 +167,4 @@ On DuckDB both models pass, and that's the point. The local warehouse accepted S
 
 ---
 
-📣 LinkedIn post: [18 Nov 2026](https://lnkd.in/p/dvuDpGQX) · Next: dbt notes 02
+📣 LinkedIn post: [18 Nov 2026](https://lnkd.in/p/dvuDpGQX) · Next: [dbt notes 02](../02-dynamic-table-auto-mode/)
