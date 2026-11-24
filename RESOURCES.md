@@ -27,4 +27,4 @@ Free courses and official documentation I recommend. Every link was checked when
 
 - [PostgreSQL: Backup and Restore](https://www.postgresql.org/docs/current/backup.html)
 - [PostgreSQL: pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html) and [pg_dumpall](https://www.postgresql.org/docs/current/app-pg-dumpall.html)
-- [DuckDB documentation](https://duckdb.org/docs/): the in-process database the leakage pipeline runs on.
+- [DuckDB documentation](https://duckdb.org/docs/): the in-process database the dbt examples run on.
