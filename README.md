@@ -11,7 +11,7 @@ One finding per note from working with dbt and Snowflake: the exact mechanism, t
 | # | Note | The idea in one line | Example | On LinkedIn |
 |---|---|---|---|---|
 | 01 | [dbt v2 caught my Snowflake error before Snowflake did](dbt-notes/01-dbt-v2-caught-my-snowflake-error/) | The incremental filter doesn't run until the table exists and the run isn't a full refresh. dbt v2's static analysis flagged the bad token. dbt Core 1.12 doesn't check the SQL it sends. | dbt + DuckDB | [18 Nov 2026](https://lnkd.in/p/dvuDpGQX) |
-| 02 | [AUTO picked FULL: a dynamic table's refresh mode](dbt-notes/02-dynamic-table-auto-mode/) | One `current_date()` in the SELECT list made a Snowflake dynamic table on `AUTO` fall back to FULL refresh, with no warning. In the WHERE clause it stayed incremental. Set `refresh_mode` explicitly. | Snowflake SQL | 25 Nov 2026 |
+| 02 | [AUTO picked FULL: a dynamic table's refresh mode](dbt-notes/02-dynamic-table-auto-mode/) | One `current_date()` in the SELECT list made a Snowflake dynamic table on `AUTO` fall back to FULL refresh, and Snowflake said so only once, in the CREATE message. In the WHERE clause it stayed incremental. Set `refresh_mode` explicitly. | Snowflake SQL | 25 Nov 2026 |
 
 *Watch or star the repo to follow along.*
 

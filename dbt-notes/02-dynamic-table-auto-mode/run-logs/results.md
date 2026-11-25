@@ -7,6 +7,20 @@
 - **Data:** 10,000 random orders for 50 customers, then 100 more orders dated today (step 4). Values are random,
   so row counts in another run can differ slightly.
 
+## Step 2: CREATE output
+
+The `status` each `create or replace dynamic table` returned, word for word (saved by the runner during the same
+run; nothing was re-run):
+
+| table | status returned by CREATE |
+|---|---|
+| DT_AUTO_SELECT_DATE | Dynamic table DT_AUTO_SELECT_DATE successfully created. FULL refresh mode was selected because: Query contains the function 'CURRENT_DATE', but change tracking is not supported on queries with non-deterministic functions. For more information, see https://docs.snowflake.com/user-guide/dynamic-tables-supported-queries#supported-non-deterministic-functions. |
+| DT_AUTO_WHERE_DATE | Dynamic table DT_AUTO_WHERE_DATE successfully created. |
+| DT_ADAPTIVE | Dynamic table DT_ADAPTIVE successfully created. |
+
+The CREATE message names the FULL mode and the reason only when AUTO fell back to FULL. When AUTO chose ADAPTIVE,
+the message says only that the table was created and doesn't name the mode.
+
 ## Step 3: what AUTO resolved to
 
 Output of `show dynamic tables`, filtered to four columns:
@@ -55,8 +69,9 @@ no rows: the test database and warehouse are gone.
 
 ## What the numbers show
 
-1. **`CURRENT_DATE()` in the SELECT list:** AUTO silently chose **FULL**, and `refresh_mode_reason` says why. Only
-   `SHOW DYNAMIC TABLES` shows that reason. Forcing INCREMENTAL on the same query fails at creation (step 5).
+1. **`CURRENT_DATE()` in the SELECT list:** AUTO chose **FULL**. It says so once, in the CREATE status message
+   (step 2). After that, the place to see the mode and the reason is `SHOW DYNAMIC TABLES` (`refresh_mode`,
+   `refresh_mode_reason`). Forcing INCREMENTAL on the same query fails at creation (step 5).
 2. **`CURRENT_DATE()` only in the WHERE clause:** the same function didn't block incremental refresh. AUTO chose
    **ADAPTIVE**, not INCREMENTAL, and the refreshes ran as INCREMENTAL.
 3. **The FULL table rewrote everything:** 50 rows deleted and 50 inserted for 100 new orders. The incremental tables

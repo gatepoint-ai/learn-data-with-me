@@ -1,7 +1,8 @@
 # dbt notes 02 · AUTO picked FULL: a dynamic table's refresh mode
 
 One `current_date()` in the SELECT list, and a Snowflake dynamic table on `refresh_mode = AUTO` picked FULL
-refresh. No error, no warning. The only place that tells you is one column of `SHOW DYNAMIC TABLES`.
+refresh. Snowflake says so once, in the CREATE status message. After that, the reason lives in one column of
+`SHOW DYNAMIC TABLES`.
 
 ## The test
 
@@ -15,6 +16,17 @@ Three dynamic tables over the same source, 10,000 random orders for 50 customers
 
 All three use `target_lag = downstream` with no consumer, so nothing refreshes on a schedule: every refresh in the
 log is either the creation or a manual `alter dynamic table … refresh`.
+
+## What CREATE said
+
+| Table | Status returned by CREATE |
+|---|---|
+| DT_AUTO_SELECT_DATE | Dynamic table DT_AUTO_SELECT_DATE successfully created. **FULL refresh mode was selected because:** Query contains the function 'CURRENT_DATE', but change tracking is not supported on queries with non-deterministic functions. … |
+| DT_AUTO_WHERE_DATE | Dynamic table DT_AUTO_WHERE_DATE successfully created. |
+| DT_ADAPTIVE | Dynamic table DT_ADAPTIVE successfully created. |
+
+The CREATE message names the mode only when AUTO falls back to FULL. It's one line, easy to miss when a tool
+runs the CREATE for you.
 
 ## What AUTO resolved to
 
@@ -30,8 +42,8 @@ from table(result_scan(last_query_id()));
 | DT_AUTO_SELECT_DATE | **FULL** | Query contains the function 'CURRENT_DATE', but change tracking is not supported on queries with non-deterministic functions. … |
 | DT_AUTO_WHERE_DATE | **ADAPTIVE** | *(null)* |
 
-- `current_date()` in the SELECT list made AUTO fall back to FULL. The reason is a full sentence in
-  `refresh_mode_reason`, a column that only `SHOW DYNAMIC TABLES` returns.
+- `current_date()` in the SELECT list made AUTO fall back to FULL. After the CREATE message, the reason is a
+  full sentence in `refresh_mode_reason`, a column that `SHOW DYNAMIC TABLES` returns.
 - The same function in the WHERE clause didn't block incremental refresh. AUTO resolved to **ADAPTIVE** there,
   not INCREMENTAL.
 
@@ -67,7 +79,7 @@ That's the behavior you want: the mistake shows up when you deploy, not later in
 - Set `refresh_mode` explicitly (`INCREMENTAL`, `ADAPTIVE` or `FULL`); Snowflake's docs recommend the same.
 - Keep `current_date()` / `current_timestamp()` out of the SELECT list of an incremental dynamic table. In
   WHERE / HAVING / QUALIFY they're allowed.
-- After creating a dynamic table, check `refresh_mode` and `refresh_mode_reason` in `SHOW DYNAMIC TABLES`, and
+- Read the CREATE status, and after creating a dynamic table check `refresh_mode` and `refresh_mode_reason` in `SHOW DYNAMIC TABLES`, and
   `refresh_action` in the refresh history.
 - In dbt, the `dynamic_table` materialization in dbt-snowflake has the same `refresh_mode` config.
 
@@ -82,7 +94,7 @@ fail. Values are random, so your row counts can differ slightly.
 | File | What |
 |---|---|
 | `run-logs/test-auto-refresh-mode.sql` | the test script |
-| `run-logs/results.md` | the raw outputs of my run: SHOW DYNAMIC TABLES, refresh history with the statistics JSON, the compile error, cleanup |
+| `run-logs/results.md` | the raw outputs of my run: the CREATE status messages, SHOW DYNAMIC TABLES, refresh history with the statistics JSON, the compile error, cleanup |
 
 ## Go deeper
 
