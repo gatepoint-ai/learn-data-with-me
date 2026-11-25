@@ -1,4 +1,4 @@
-# dbt notes 02 · AUTO picked FULL: a dynamic table's refresh mode
+# Snowflake 01 · AUTO picked FULL: a dynamic table's refresh mode
 
 One `current_date()` in the SELECT list, and a Snowflake dynamic table on `refresh_mode = AUTO` picked FULL
 refresh. Snowflake says so once, in the CREATE status message. After that, the reason lives in one column of
@@ -81,7 +81,6 @@ That's the behavior you want: the mistake shows up when you deploy, not later in
   WHERE / HAVING / QUALIFY they're allowed.
 - Read the CREATE status, and after creating a dynamic table check `refresh_mode` and `refresh_mode_reason` in `SHOW DYNAMIC TABLES`, and
   `refresh_action` in the refresh history.
-- In dbt, the `dynamic_table` materialization in dbt-snowflake has the same `refresh_mode` config.
 
 ## Try it
 
@@ -101,10 +100,9 @@ fail. Values are random, so your row counts can differ slightly.
 - [Dynamic table refresh modes](https://docs.snowflake.com/en/user-guide/dynamic-tables/refresh-modes): AUTO, INCREMENTAL, ADAPTIVE, FULL.
 - [Supported queries](https://docs.snowflake.com/en/user-guide/dynamic-tables/supported-queries): which functions and constructs block incremental refresh.
 - [CREATE DYNAMIC TABLE](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table)
-- [Dynamic tables in dbt-snowflake](https://docs.getdbt.com/reference/resource-configs/snowflake-configs#dynamic-tables)
 
 *Tested on Snowflake 10.42.104, 24 Nov 2026.*
 
 ---
 
-📣 LinkedIn post: 25 Nov 2026 · Previous: [dbt notes 01](../01-dbt-v2-caught-my-snowflake-error/)
+📣 LinkedIn post: 25 Nov 2026 · Back to [all notes](../../README.md)
