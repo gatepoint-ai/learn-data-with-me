@@ -105,4 +105,4 @@ fail. Values are random, so your row counts can differ slightly.
 
 ---
 
-📣 LinkedIn post: 25 Nov 2026 · Back to [all notes](../../README.md)
+📣 LinkedIn post: [25 Nov 2026](https://lnkd.in/p/dhjAj5JZ) · Back to [all notes](../../README.md)

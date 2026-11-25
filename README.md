@@ -14,7 +14,7 @@ Tested on Snowflake alone, with SQL scripts that create their own database and w
 
 | # | Note | The idea in one line | On LinkedIn |
 |---|---|---|---|
-| 01 | [AUTO picked FULL: a dynamic table's refresh mode](snowflake/01-dynamic-table-auto-mode/) | One `current_date()` in the SELECT list made a dynamic table on `AUTO` fall back to FULL refresh, and Snowflake said so only once, in the CREATE message. In the WHERE clause it stayed incremental. Set `refresh_mode` explicitly. | 25 Nov 2026 |
+| 01 | [AUTO picked FULL: a dynamic table's refresh mode](snowflake/01-dynamic-table-auto-mode/) | One `current_date()` in the SELECT list made a dynamic table on `AUTO` fall back to FULL refresh, and Snowflake said so only once, in the CREATE message. In the WHERE clause it stayed incremental. Set `refresh_mode` explicitly. | [25 Nov 2026](https://lnkd.in/p/dhjAj5JZ) |
 
 ### dbt + Snowflake
 
